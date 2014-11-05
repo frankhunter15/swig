@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'AFNetworking/Reachability', '~> 2.3'
   s.dependency 'libextobjc', '~> 0.4'
-  s.dependency 'pjsip-ios', '~> 0.1'
+  #s.dependency 'pjsip-ios', '~> 0.1', :git => "https://github.com/hiroeorz/pjsip-ios.git", :branch => "xcode6.1-pjsip2.3"
   s.dependency 'CocoaLumberjack', '2.0.0-beta'
 
   s.prefix_header_contents = '#import <libextobjc/extobjc.h>', '#import <CocoaLumberjack/CocoaLumberjack.h>',
