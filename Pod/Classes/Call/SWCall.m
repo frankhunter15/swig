@@ -294,12 +294,21 @@
 #pragma Call Management
 
 -(void)answer:(void(^)(NSError *error))handler {
-    
+
+    pjsua_call_setting call_setting;
+    pjsua_call_setting_default(&call_setting);
+    call_setting.vid_cnt = 1;
+    pj_status_t status;
+    NSError *error;
+    status = pjsua_call_answer2((int)self.callId, &call_setting, 200, NULL, NULL);
+
+    /*
     pj_status_t status;
     NSError *error;
     
     status = pjsua_call_answer((int)self.callId, PJSIP_SC_OK, NULL, NULL);
-    
+    */
+
     if (status != PJ_SUCCESS) {
         
         error = [NSError errorWithDomain:@"Error answering up call" code:0 userInfo:nil];

@@ -91,7 +91,11 @@
     acc_cfg.cred_info[0].username = [self.accountConfiguration.username pjString];
     acc_cfg.cred_info[0].data_type = PJSIP_CRED_DATA_PLAIN_PASSWD;
     acc_cfg.cred_info[0].data = [self.accountConfiguration.password pjString];
-    
+
+    // Enable incomming video auto show.
+    acc_cfg.vid_in_auto_show = PJ_TRUE;
+    acc_cfg.vid_out_auto_transmit = PJ_TRUE;
+
     if (!self.accountConfiguration.proxy) {
         acc_cfg.proxy_cnt = 0;
     }
