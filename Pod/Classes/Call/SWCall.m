@@ -306,13 +306,18 @@
     pjmedia_vid_codec_param param;
 
     pjsua_vid_codec_get_param(&codec_id, &param);
+    param.enc_fmt.det.vid.size.w = 656;
+    param.enc_fmt.det.vid.size.h = 656;
+
+    /*
     param.dec_fmtp.param[0].name = pj_str("CIF");
     param.dec_fmtp.param[0].val = pj_str("1");
     param.dec_fmtp.param[1].name = pj_str("QCIF");
     param.dec_fmtp.param[1].val = pj_str("1");
+*/
 
     //framerate
-    param.enc_fmt.det.vid.fps.num = 30;
+    param.enc_fmt.det.vid.fps.num = 22;
     param.enc_fmt.det.vid.fps.denum = 1;
 
     pjsua_vid_codec_set_param(&codec_id, &param);
