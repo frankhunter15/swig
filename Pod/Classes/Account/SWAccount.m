@@ -112,7 +112,7 @@
     acc_cfg.vid_in_auto_show = PJ_TRUE;
     acc_cfg.vid_out_auto_transmit = PJ_TRUE;
     acc_cfg.vid_cap_dev = 0; //PJMEDIA_VID_DEFAULT_CAPTURE_DEV;
-    acc_cfg.vid_rend_dev = 1; // 1: [Capturer] iOS - Front Camera 2:Back CameraPJMEDIA_VID_DEFAULT_RENDER_DEV;
+    acc_cfg.vid_rend_dev = 3; // 1: [Capturer] iOS - Front Camera 2:Back CameraPJMEDIA_VID_DEFAULT_RENDER_DEV;
 
     int dev_count = pjsua_vid_dev_count();
     NSLog(@"dev count: %d", dev_count);
