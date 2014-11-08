@@ -96,7 +96,7 @@
     acc_cfg.vid_in_auto_show = PJ_TRUE;
     acc_cfg.vid_out_auto_transmit = PJ_TRUE;
     acc_cfg.vid_cap_dev = PJMEDIA_VID_DEFAULT_CAPTURE_DEV;
-    acc_cfg.vid_rend_dev = -PJMEDIA_VID_DEFAULT_RENDER_DEV;
+    acc_cfg.vid_rend_dev = PJMEDIA_VID_DEFAULT_RENDER_DEV;
 
     if (!self.accountConfiguration.proxy) {
         acc_cfg.proxy_cnt = 0;
