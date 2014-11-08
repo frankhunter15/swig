@@ -306,8 +306,8 @@
     pjmedia_vid_codec_param param;
 
     pjsua_vid_codec_get_param(&codec_id, &param);
-    param.enc_fmt.det.vid.size.w = 656;
-    param.enc_fmt.det.vid.size.h = 656;
+    param.enc_fmt.det.vid.size.w = 1280;
+    param.enc_fmt.det.vid.size.h = 720;
 
     /*
     param.dec_fmtp.param[0].name = pj_str("CIF");

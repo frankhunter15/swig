@@ -95,6 +95,8 @@
     // Enable incomming video auto show.
     acc_cfg.vid_in_auto_show = PJ_TRUE;
     acc_cfg.vid_out_auto_transmit = PJ_TRUE;
+    acc_cfg.vid_cap_dev = -1;
+    acc_cfg.vid_rend_dev = -2;
 
     if (!self.accountConfiguration.proxy) {
         acc_cfg.proxy_cnt = 0;
