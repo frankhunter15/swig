@@ -92,11 +92,27 @@
     acc_cfg.cred_info[0].data_type = PJSIP_CRED_DATA_PLAIN_PASSWD;
     acc_cfg.cred_info[0].data = [self.accountConfiguration.password pjString];
 
-    // Enable incomming video auto show.
+    /* Enable incomming video auto show.
+     . dev_id 0: iPhone IO device  (in=1, out=1) 8000Hz
+     ..core audio initialized
+     ..select() I/O Queue created
+     ..Initializing video subsystem..
+
+     ...OpenH264 codec  initialized
+     ...OpenGL   device initialized
+     ...iOS      video  initialized with 3 devices:
+
+     ... 0: [Renderer] iOS - UIView
+     ... 1: [Capturer] iOS - Front Camera
+     ... 2: [Capturer] iOS - Back Camera
+
+     ...Colorbar video src initialized with 1 device(s):
+     ... 0: Colorbar generator
+     */
     acc_cfg.vid_in_auto_show = PJ_TRUE;
     acc_cfg.vid_out_auto_transmit = PJ_TRUE;
     acc_cfg.vid_cap_dev = 0; //PJMEDIA_VID_DEFAULT_CAPTURE_DEV;
-    acc_cfg.vid_rend_dev = 2; // 1: [Capturer] iOS - Front Camera 2:Back CameraPJMEDIA_VID_DEFAULT_RENDER_DEV;
+    acc_cfg.vid_rend_dev = 1; // 1: [Capturer] iOS - Front Camera 2:Back CameraPJMEDIA_VID_DEFAULT_RENDER_DEV;
 
     int dev_count = pjsua_vid_dev_count();
     NSLog(@"dev count: %d", dev_count);
