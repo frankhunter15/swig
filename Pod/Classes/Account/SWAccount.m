@@ -98,6 +98,9 @@
     acc_cfg.vid_cap_dev = PJMEDIA_VID_DEFAULT_CAPTURE_DEV;
     acc_cfg.vid_rend_dev = PJMEDIA_VID_DEFAULT_RENDER_DEV;
 
+    int dev_count = pjsua_vid_dev_count();
+    NSLog(@"dev count: %d", dev_count);
+
     if (!self.accountConfiguration.proxy) {
         acc_cfg.proxy_cnt = 0;
     }
