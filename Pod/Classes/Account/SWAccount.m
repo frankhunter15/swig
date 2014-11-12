@@ -113,7 +113,7 @@
      */
     acc_cfg.vid_in_auto_show = PJ_TRUE;
     acc_cfg.vid_out_auto_transmit = PJ_TRUE;
-    acc_cfg.vid_cap_dev = 1;
+    acc_cfg.vid_cap_dev = 2;
     acc_cfg.vid_rend_dev = 0;
 
     if (!self.accountConfiguration.proxy) {
