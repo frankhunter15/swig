@@ -302,26 +302,6 @@
     NSError *error;
     status = pjsua_call_answer2((int)self.callId, &call_setting, 200, NULL, NULL);
 
-    const pj_str_t codec_id = {"H264", 4};
-    pjmedia_vid_codec_param param;
-
-    pjsua_vid_codec_get_param(&codec_id, &param);
-    param.enc_fmt.det.vid.size.w = 1280;
-    param.enc_fmt.det.vid.size.h = 720;
-
-    /*
-    param.dec_fmtp.param[0].name = pj_str("CIF");
-    param.dec_fmtp.param[0].val = pj_str("1");
-    param.dec_fmtp.param[1].name = pj_str("QCIF");
-    param.dec_fmtp.param[1].val = pj_str("1");
-*/
-
-    //framerate
-    param.enc_fmt.det.vid.fps.num = 22;
-    param.enc_fmt.det.vid.fps.denum = 1;
-
-    pjsua_vid_codec_set_param(&codec_id, &param);
-
     /*
     pj_status_t status;
     NSError *error;
