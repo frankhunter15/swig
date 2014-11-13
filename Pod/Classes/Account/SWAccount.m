@@ -111,9 +111,15 @@
      ...Colorbar video src initialized with 1 device(s):
      ... 0: Colorbar generator
      */
+
+    /* device No
+       0: Render device
+       2: Front Camera
+       3: Back Camera
+     */
     acc_cfg.vid_in_auto_show = PJ_TRUE;
     acc_cfg.vid_out_auto_transmit = PJ_TRUE;
-    acc_cfg.vid_cap_dev = 2;
+    acc_cfg.vid_cap_dev = 3;
     acc_cfg.vid_rend_dev = 0;
 
     if (!self.accountConfiguration.proxy) {
@@ -156,6 +162,15 @@
             handler(nil);
         }
     }
+}
+
+-(void)showVideoWindow:(NSInteger)devIndex toView:(UIView *)aView {
+    pjsua_vid_win_id winIndex = pjsua_vid_preview_get_win((int)devIndex);
+    pjsua_vid_win_info info;
+    pjsua_vid_win_get_info(winIndex, &info);
+    pjmedia_vid_dev_hwnd hwnd = info.hwnd;
+    UIView *window = (__bridge UIView *)hwnd.info.ios.window;
+    [aView addSubview:window];
 }
 
 -(void)connect:(void(^)(NSError *error))handler {
