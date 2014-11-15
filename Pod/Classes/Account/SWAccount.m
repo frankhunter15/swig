@@ -164,13 +164,13 @@
     }
 }
 
--(void)showVideoWindow:(NSInteger)devIndex toView:(UIView *)aView {
-    pjsua_vid_win_id winIndex = pjsua_vid_preview_get_win((int)devIndex);
++ (UIView *)showVideoWindow:(NSInteger)windowIndex width:(CGFloat)width height:(CGFloat)height {
     pjsua_vid_win_info info;
-    pjsua_vid_win_get_info(winIndex, &info);
+    pjsua_vid_win_get_info(windowIndex, &info);
     pjmedia_vid_dev_hwnd hwnd = info.hwnd;
-    UIView *window = (__bridge UIView *)hwnd.info.ios.window;
-    [aView addSubview:window];
+    UIView *view = (__bridge UIView *)hwnd.info.ios.window;
+    view.hidden = NO;
+    return view;
 }
 
 -(void)connect:(void(^)(NSError *error))handler {

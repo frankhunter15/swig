@@ -42,6 +42,6 @@ typedef NS_ENUM(NSInteger, SWAccountState) {
 //-(void)answerCall:(NSUInteger)callId completionHandler:(void(^)(NSError *error))handler;
 //-(void)endCall:(NSInteger)callId completionHandler:(void(^)(NSError *error))handler;
 
--(void)showVideoWindow:(NSInteger)devIndex toView:(UIView *)aView;
++ (UIView *)showVideoWindow:(NSInteger)windowIndex width:(CGFloat)width height:(CGFloat)height;
 
 @end
