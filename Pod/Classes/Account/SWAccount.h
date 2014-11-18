@@ -43,6 +43,13 @@ typedef NS_ENUM(NSInteger, SWAccountState) {
 //-(void)answerCall:(NSUInteger)callId completionHandler:(void(^)(NSError *error))handler;
 //-(void)endCall:(NSInteger)callId completionHandler:(void(^)(NSError *error))handler;
 
-+ (UIView *)showVideoWindow:(NSInteger)windowIndex width:(CGFloat)width height:(CGFloat)height;
++ (void)setResolutionWidth:(NSInteger)width Height:(NSInteger)height;
++ (UIView *)getVideoView:(NSInteger)windowIndex;
++ (void)changeOrientationWindowId:(NSInteger)windowId angle:(NSInteger)angle;
++ (void)setH264Profile;
 
++ (void)addTransmissionVideo:(NSInteger)callId;
++ (void)removeTransmissionVideo:(NSInteger)callId;
++ (void)startTransmissionVideo:(NSInteger)callId;
++ (void)stopTransmissionVideo:(NSInteger)callId;
 @end

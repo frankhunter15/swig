@@ -164,13 +164,57 @@
     }
 }
 
-+ (UIView *)showVideoWindow:(NSInteger)windowIndex width:(CGFloat)width height:(CGFloat)height {
++ (void)setResolutionWidth:(NSInteger)width Height:(NSInteger)height {
+    const pj_str_t codec_id = {"H264", 4};
+    pjmedia_vid_codec_param param;
+    pjsua_vid_codec_get_param(&codec_id, &param);
+    param.enc_fmt.det.vid.size.w = (int)width;
+    param.enc_fmt.det.vid.size.h = (int)height;
+    param.dec_fmt.det.vid.size.w = (int)width;
+    param.dec_fmt.det.vid.size.h = (int)height;
+    pjsua_vid_codec_set_param(&codec_id, &param);
+}
+
++ (UIView *)getVideoView:(NSInteger)windowIndex {
     pjsua_vid_win_info info;
     pjsua_vid_win_get_info(windowIndex, &info);
     pjmedia_vid_dev_hwnd hwnd = info.hwnd;
     UIView *view = (__bridge UIView *)hwnd.info.ios.window;
     view.hidden = NO;
     return view;
+}
+
++ (void)addTransmissionVideo:(NSInteger)callId {
+    pjsua_call_set_vid_strm(callId, PJSUA_CALL_VID_STRM_ADD, NULL);
+}
+
++ (void)removeTransmissionVideo:(NSInteger)callId {
+    pjsua_call_set_vid_strm(callId, PJSUA_CALL_VID_STRM_REMOVE, NULL);
+}
+
++ (void)startTransmissionVideo:(NSInteger)callId {
+    pjsua_call_set_vid_strm(callId, PJSUA_CALL_VID_STRM_START_TRANSMIT, NULL);
+}
+
++ (void)stopTransmissionVideo:(NSInteger)callId {
+    pjsua_call_set_vid_strm(callId, PJSUA_CALL_VID_STRM_STOP_TRANSMIT, NULL);
+}
+
++ (void)setH264Profile {
+    const pj_str_t codec_id = {"H264", 4};
+    pjmedia_vid_codec_param param;
+    pjsua_vid_codec_get_param(&codec_id, &param);
+
+    param.dec_fmtp.param[0].name = pj_str("profile-level-id");
+    /* Set the profile level to "1f", which means level 3.1 */
+    /* Set the profile level to "1e", which means level 3.0 */
+    /* Set the profile level to "15", which means level 2.1 */
+    param.dec_fmtp.param[0].val = pj_str("xxxx1f");
+    pjsua_vid_codec_set_param(&codec_id, &param);
+}
+
++ (void)changeOrientationWindowId:(NSInteger)windowId angle:(NSInteger)angle {
+    pjsua_vid_win_rotate((int)windowId, (int)angle);
 }
 
 -(void)connect:(void(^)(NSError *error))handler {
